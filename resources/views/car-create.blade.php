@@ -9,12 +9,12 @@
     <!-- <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script> -->
     <style>
-        .form-create {
+        /* .form-create {
             display: flex;
             align-items: center;
             justify-content: center;
             align-items: center;
-            /* height: 80vh; */
+     
             margin-left: 180px;
         }
 
@@ -24,19 +24,44 @@
 
         .form-control {
             min-width: 600px;
+        } */
+
+
+        .form-create {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            margin-left: 280px;
+            border: 1px solid gray;
+            border-radius: 20px;
+
+        }
+
+        .custom-form {
+            max-width: 600px;
+            /* Adjust the max-width as needed */
+            border: 1px solid #ccc;
+            /* Add a border */
+            padding: 20px;
+            /* Add some padding for better appearance */
+        }
+
+        .form-control {
+            min-width: 400px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="col-md-12 align-content-center mt-5">
-            <h1 class="text-center text-danger " id="animation">Thêm mới sản phẩm</h1>
-        </div>
 
+        <div class="col-md-6 mt-4 form-create">
 
-        <div class="col-md-8 form-create">
             <form action="{{route('cars.store')}}" enctype="multipart/form-data" method="POST">
+                <div class="mb-3">
+                    <h1 class="text-center text-danger " id="animation">Thêm mới sản phẩm</h1>
+                </div>
                 <div class="mb-3">
                     @if ($errors->has('model'))
                     <label for="model" style="color: red;">Model : </label>
@@ -70,6 +95,14 @@
                     @error('description')
                     <span style="color: red;">{{$message}}</span>
                     @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="mf_name" class="col-form-label">Mf_name:</label>
+                    <select name="mf_id" id="mf_name" class=" form-select">
+                        @foreach($mfsList as $mf)
+                        <option name="mf_id" value="{{ $mf->id }}">{{ $mf->mf_name }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div>
                     @if ($errors->has('image'))

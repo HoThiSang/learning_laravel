@@ -58,12 +58,32 @@
                         <span style="color: red;">{{$message}}</span>
                         @enderror
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            @if ($errors->has('description'))
+                            <label for="product_on" class="col-form-label" style="color: red;">Product_on : </label>
+                            @else
+                            <label for="product_on" class="col-form-label">Product_on : </label>
+                            @endif
+
+                            <input type="date" class="form-control" placeholder="First name" value="{{ isset($car)? $car->product_on : old('product_on') }}" aria-label="First name" name="product_on">
+                            @error('product_on')
+                            <span style="color: red;">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="col">
+                            <label for="mf_name" class="col-form-label">Mf_name:</label>
+                            <input type="text" class="form-control" value="{{ isset($car)? $car->mf->mf_name : old('mf_name') }}" placeholder="Last name" aria-label="Last name" name="mf_name">
+                        </div>
+                    </div>
+
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Produced_on :</label>
-                        <input type="date" class="form-control" value="{{ isset($car)? $car->product_on : old('product_on') }}" name="product_on">
-                        @error('product_on')
-                        <span style="color: red;">{{$message}}</span>
-                        @enderror
+                        <label for="mf_name" class="col-form-label">Change Mf_name:</label>
+                        <select name="mf_id" id="mf_name" class=" form-select">
+                            @foreach($mfsList as $mf)
+                            <option name="mf_id" value="{{ $mf->id }}">{{ $mf->mf_name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="mb-3">
                         @if ($errors->has('image'))
@@ -76,7 +96,6 @@
                         <span style="color: red;">{{$message}}</span>
                         @enderror
                     </div>
-                    <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}" /> -->
                     <button type="submit" class="btn btn-primary">Save changes</button>
                     <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color:#000" href="{{route('cars.index')}}">Back</a></button>
                 </form>

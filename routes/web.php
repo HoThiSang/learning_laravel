@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\MfController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +30,10 @@ Route::prefix('car')->group(function () {
 
     Route::post('/edit/{id}', [CarController::class, 'updateCar'])->name('editCar.car-detail');
     Route::get('/delete/{id}', [CarController::class, 'delete'])->name('delete.car-detail');
+});
+
+Route::prefix('/mf')->group(function () {
+    Route::get('/', [MfController::class, 'index']);
 });
 
 // Route::get('/getCar/{id}', [CarController::class, 'show'])->name('show.car-detail');
