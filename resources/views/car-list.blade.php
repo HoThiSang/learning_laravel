@@ -7,7 +7,7 @@
     <title>Tứ Diệp Thảo</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <style>
         .hover-effect {
             transition: transform 0.4s ease;
@@ -78,12 +78,12 @@
             <thead class="table-danger">
                 <tr>
                     <th scope="col" style="width: 5%">Id</th>
-                    <th scope="col" style="width: 25%">Description</th>
-                    <th scope="col" style="width: 20%">Model</th>
-                    <th scope="col" style="width: 20%">Mf</th>
+                    <th scope="col" style="width: 15%">Description</th>
+                    <th scope="col" style="width: 25%">Model</th>
+                    <th scope="col" style="width: 10%">Mf</th>
                     <th scope="col" style="width: 10%">Produced On</th>
-                    <th scope="col">Image</th>
-                    <th scope="col" style="width: 20%">Action</th>
+                    <th scope="col" style="width:10%">Image</th>
+                    <th scope="col" style="width: 25%">Action</th>
                 </tr>
             </thead>
 
@@ -93,16 +93,16 @@
                     <th scope="row" style="width: 5%">{{ $car->id }}</th>
                     <td style="width: 25%">{{ $car->description }}</td>
                     <td style="width: 20%">{{ $car->model }}</td>
-                    <td style="width: 20%">{{ $car->mf_name }}</td>
+                    <td style="width: 10%">{{ $car->mf->mf_name }}</td>
                     <td style="width: 15%">{{ $car->product_on }}</td>
                     <td style="width: 15%"><img src="{{'/imageS/'.$car->image}}" alt="" srcset="" height="80" width="100"></td>
 
 
                     <td style="width: 30%">
-                        <button type="button" class="btn btn-info"><a style="text-decoration: none; color:#000" href="{{ route('car-detail',['id'=>$car->id]) }}">Detail</a></button>
-                        <button type="button" class="btn btn-success"><a style="text-decoration: none; color:#000" href="{{ route('showCardetail.car-detail',['id'=>$car->id]) }}">Edit</a></button>
-                        <button type="button" class="btn btn-danger" onclick="return  alert('Do you want to delete?')"><a style=" text-decoration: none; color:#000" href="{{ route('delete.car-detail',['id'=>$car->id]) }}">Delete</a></button>
-                        <!-- <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Update</a> -->
+                        <a class="btn btn-success" style="text-decoration: none; color:#000" href="{{ route('car-detail',['id'=>$car->id]) }}"><i class="fa-solid fa-eye"></i></a>
+                        <a class="btn btn-info" style="text-decoration: none; color:#000" href="{{ route('showCardetail.car-detail',['id'=>$car->id]) }}"><i class="fa-solid fa-pencil"></i></a>
+                        <button type="button" class="btn btn-danger" onclick="return  alert('Do you want to delete?')"><a style=" text-decoration: none; color:#000" href="{{ route('delete.car-detail',['id'=>$car->id]) }}"><i class="fa-solid fa-trash"></i></a>
+                            <!-- <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Update</a> -->
                     </td>
                 </tr>
                 @endforeach

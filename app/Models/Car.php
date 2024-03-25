@@ -10,6 +10,11 @@ class Car extends Model
     use HasFactory;
     protected $table = 'cars';
 
+
+    public function mf(){
+        return $this->belongsTo('App\Models\Mf', 'mf_id','id');
+    }
+
     public function create($description, $model, $product_on)
     {
         Car::table($this->table)->insert([

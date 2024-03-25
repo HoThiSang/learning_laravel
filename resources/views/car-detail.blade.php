@@ -36,7 +36,10 @@
                             Model : {{$car->model}}
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            produced_on : {{$car->produced_on}}
+                            produced_on : {{$car->product_on}}
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Mf name : {{$car->mf->mf_name}}
                         </li>
                     </ul>
                 </div>
