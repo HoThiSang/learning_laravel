@@ -104,6 +104,7 @@
                         @endforeach
                     </select>
                 </div>
+                
                 <div>
                     @if ($errors->has('image'))
                     <label for="image" style="color: red;">Image : </label>
